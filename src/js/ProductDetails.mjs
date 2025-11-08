@@ -22,6 +22,21 @@ export default class ProductDetails {
 
     addProductToCart() {
         const curCart = getLocalStorage("so-cart") || [];
+        // Before we push to curCart, check to see if this product is already there
+        curCart.forEach((element, index) => {
+            if (element.Id === this.product.Id) {
+                if (!element.Quantity) {
+                    // If this comes back as undefined or false
+                    this.product.Quantity = 0;
+                } else {
+                    // Set this product Quantity to the last object in the list
+                    this.product.Quantity = element.Quantity;
+                };
+                this.product.Quantity += 1;
+                curCart.splice(index, 1);
+            }
+        });
+        console.log(this.product);
         curCart.push(this.product);
         setLocalStorage("so-cart", curCart);
     }
