@@ -1,31 +1,44 @@
-import { getLocalStorage } from "./utils.mjs";
-import {loadHeaderFooter} from "./utils.mjs";
+// Import renderListWithTemplate
+import { renderListWithTemplate } from "./utils.mjs";
 
-loadHeaderFooter();
-
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}
-
+// Card Template
 function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: ${item.Quantity}</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+  const newItem = 
+  `<li class="cart-card divider">
+    <a href="#" class="cart-card__image">
+      <img
+        src="${item.Images.PrimarySmall}"
+        alt="${item.Name}"
+      />
+    </a>
+    <a href="#">
+      <h2 class="card__name">${item.Name}</h2>
+    </a>
+    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+    <p class="cart-card__quantity">qty: ${item.Quantity}</p>
+    <p class="cart-card__price">$${item.FinalPrice}</p>
+  </li>`;
 
   return newItem;
 }
 
-renderCartContents();
+// ShoppingCart Class
+export default class ShoppingCart {
+
+  constructor(cart, listElement) {
+    // Save the cart and listElements
+    this.cart = cart; // The cart is what is in local storage
+    this.listElement = listElement; // The list element is the HTML element we want it rendered in
+  }
+
+  init() {
+    // Call the renderCartContents Function
+    this.renderCartContents(this.cart);
+  }
+
+  renderCartContents(cartItems) {
+    // Now pass the items into the util function to render them
+    renderListWithTemplate(cartItemTemplate, this.listElement, cartItems, "afterbegin", true);
+  }
+
+}
