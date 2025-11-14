@@ -32,13 +32,23 @@ export default class ShoppingCart {
   }
 
   init() {
-    // Call the renderCartContents Function
-    this.renderCartContents(this.cart);
+    // Create a check to see if the cart is empty, we do this with a falsy value
+    if (!this.cart) {
+      this.renderCartContentsEmpty();
+    } else {
+      // The cart is not empty
+      // Call the renderCartContents Function
+      this.renderCartContents(this.cart);
+    }
   }
 
   renderCartContents(cartItems) {
     // Now pass the items into the util function to render them
     renderListWithTemplate(cartItemTemplate, this.listElement, cartItems, "afterbegin", true);
+  }
+
+  renderCartContentsEmpty() {
+    this.listElement.innerHTML = "<li>The cart is empty, please come back after adding some items.</li>";
   }
 
 }
