@@ -3,6 +3,14 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 // Card Template Function
 function productCardTemplate(product) {
+    // Check for discount
+    let discountBadge = "";
+    if (product.FinalPrice < product.SuggestedRetailPrice) {
+        const percent = Math.round(
+            ((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100
+        );
+        discountBadge = `<span class="product-card__badge">-${percent}%</span>`;
+    }
     return `
     <li class="product-card">
         <a href="product_pages/?product=${product.Id}">
