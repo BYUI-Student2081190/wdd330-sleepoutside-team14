@@ -208,9 +208,25 @@ button {
   display: grid;
   grid-template-columns: 25% auto 15%;
   font-size: var(--small-font);
-  /* max-height: 120px; */
   align-items: center;
+  position: relative; /* allow absolute positioning inside */
 }
+
+.cartBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
+
+.cartBtn:hover {
+  color: var(--secondary-color);
+}
+
 
 .cart-card__image {
   grid-row: 1/3;
@@ -234,6 +250,7 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
+  padding-top: 5rem;
 }
 
 .cart-card__price {
