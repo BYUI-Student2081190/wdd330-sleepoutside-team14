@@ -37,7 +37,7 @@ export function renderListWithTemplate(template, parentElement, list, position =
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(template, parentElement, data=null, callback=null) {
+export function renderWithTemplate(template, parentElement, data, callback) {
   // if clear is true we need to clear out the contents of the parent.
 
   parentElement.innerHTML = template;
@@ -54,10 +54,8 @@ export async function loadTemplate(path){
 }
 
 export async function loadHeaderFooter(){
-  const headerContent= await loadTemplate('../public/partials/header.html');
-  const footerContent= await loadTemplate('../public/partials/footer.html');
-
-  console.log(headerContent, footerContent);
+  const headerContent= await loadTemplate('/partials/header.html');
+  const footerContent= await loadTemplate('/partials/footer.html');
 
   const header = document.getElementById('header');
   const footer = document.getElementById('footer');
