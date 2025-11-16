@@ -25,7 +25,7 @@ https://trello.com/b/inC7xOTK/sleep-outside-team-14
 
 ### Live Project URL
 
-https://polite-tanuki-9a2155.netlify.app/
+[https://soft-starlight-48456a.netlify.app/]
 
 
 ---
