@@ -7,7 +7,7 @@ import { loadHeaderFooter, getParam } from "./utils.mjs";
 loadHeaderFooter();
 
 // Get the category from the param
-const category = getParam('category');
+const category = getParam("category");
 
 const dataSource = new ProductData();
 
