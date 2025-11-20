@@ -19,6 +19,7 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
         <form name="checkout">
+          <input type="hidden" name="orderDate" id="orderDate">
           <fieldset>
             <legend>Personal Info</legend>
             <label for="fname">First Name: <input id="fname" name="fname" type="text" required></label>
@@ -26,16 +27,16 @@
           </fieldset>
           <fieldset>
             <legend>Shipping Info</legend>
-            <label for="address">Address: <input id="address" name="address" type="text" required></label>
+            <label for="street">Street: <input id="street" name="street" type="text" required></label>
             <label for="city">City: <input id="city" name="city" type="text" required></label>
             <label for="state">State: <input id="state" name="state" type="text" required></label>
-            <label for="zip">Zip Code: <input id="zip" name="zip" type="text" required></label>
+            <label for="zip">Zip Code: <input type="text" name="zip" id="zip" required></label>
           </fieldset>
           <fieldset>
             <legend>Payment Info</legend>
-            <label for="credit">Credit Card Number: <input id="credit" name="credit" type="text" required></label>
-            <label for="expDate">Experation Date: <input id="expDate" name="expDate" type="text" required></label>
-            <label for="secCode">Security Code: <input id="secCode" name="secCode" type="text" required></label>
+            <label for="cardNumber">Credit Card Number: <input id="cardNumber" name="cardNumber" type="text" required></label>
+            <label for="expiration">Experation Date: <input id="expiration" name="expiration" type="text" required></label>
+            <label for="code">Security Code: <input id="code" name="code" type="text" required></label>
           </fieldset>
           <fieldset class="checkout-summary">
           <legend>Order Summary</legend>
@@ -52,7 +53,7 @@
             <div id="orderTotal"></div>
           </div>
         </fieldset>
-          <button type="submit">Checkout</button>
+          <button id="checkoutSubmit" type="submit">Checkout</button>
         </form>
       </section>
     </main>
