@@ -37,7 +37,7 @@ export function renderListWithTemplate(template, parentElement, list, position =
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(template, parentElement, data=null, callback=null) {
+export function renderWithTemplate(template, parentElement, data, callback) {
   // if clear is true we need to clear out the contents of the parent.
 
   parentElement.innerHTML = template;

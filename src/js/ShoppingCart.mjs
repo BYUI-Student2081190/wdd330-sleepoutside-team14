@@ -5,6 +5,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function cartItemTemplate(item) {
   const newItem = 
   `<li class="cart-card divider">
+    <button class="cartBtn">❌</button>
     <a href="#" class="cart-card__image">
       <img
         src="${item.Images.PrimarySmall}"
@@ -50,5 +51,4 @@ export default class ShoppingCart {
   renderCartContentsEmpty() {
     this.listElement.innerHTML = "<li>The cart is empty, please come back after adding some items.</li>";
   }
-
 }

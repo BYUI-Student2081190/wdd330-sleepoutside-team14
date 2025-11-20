@@ -34,12 +34,11 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
-        // Added this to interact with span tag
-        document.getElementById("product-type").textContent = this.category;
+        document.querySelector("#product-type").textContent = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     }
 
     renderList(list) {
-        renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
 }
