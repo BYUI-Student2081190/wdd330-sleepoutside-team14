@@ -96,3 +96,10 @@ export function removeAlertMessages() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => {document.querySelector("main").removeChild(alert)});
 }
+
+// Generate Bread Crumbs for User
+export function generateBreadCrumbs(pageList) {
+  const breadCrumbs = pageList.join(" -> ");
+  // Place the breadCrumbs in the div
+  document.querySelector(".breadcrumbs").innerHTML = `<p>${breadCrumbs}</p>`;
+}
