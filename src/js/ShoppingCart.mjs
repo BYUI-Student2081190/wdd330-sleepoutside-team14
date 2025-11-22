@@ -38,29 +38,33 @@ export default class ShoppingCart {
 
   init() {
     // Create a check to see if the cart is empty, we do this with a falsy value
-    if (this.cart.length <= 0) {
+    if (!this.cart) {
       this.renderCartContentsEmpty();
     } else {
-      // The cart is not empty
-      // Call the renderCartContents Function
-      this.renderCartContents(this.cart);
-      // Add the buttons code here
-      
+      if (this.cart.length <= 0) {
+        this.renderCartContentsEmpty();
+      } else {
+        // The cart is not empty
+        // Call the renderCartContents Function
+        this.renderCartContents(this.cart);
+      }
     }
   }
 
   calculateTotal() {
     // Calculate total
     let total = 0;
-    if (this.cart.length > 0)
-    {
-      this.cart.forEach(element => {
-          total += element.Quantity * element.FinalPrice;
-      });
-      this.cartTotal = total;
-    } else {
-      this.cartTotal = total;
+    // Check to see if the cart exists on site already if not render nothing
+    if (this.cart) {
+      if (this.cart.length > 0)
+      {
+        this.cart.forEach(element => {
+            total += element.Quantity * element.FinalPrice;
+        });
+      }
     }
+    // Get the total
+    this.cartTotal = total;
     // Set the total
     document.querySelector(".list-total").textContent = `Total: $${this.cartTotal.toFixed(2)}`;
   }

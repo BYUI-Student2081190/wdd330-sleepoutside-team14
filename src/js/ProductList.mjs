@@ -1,5 +1,5 @@
 // Import renderListWithTemplate
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, generateBreadCrumbs } from "./utils.mjs";
 
 // Card Template Function
 function productCardTemplate(product) {
@@ -34,6 +34,8 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
+        const pageList = ["Home", "Product List", this.category.charAt(0).toUpperCase() + this.category.slice(1), `(${list.length} Items)`];
+        generateBreadCrumbs(pageList);
         document.querySelector("#product-type").textContent = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     }
 

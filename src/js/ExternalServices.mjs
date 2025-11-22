@@ -1,11 +1,13 @@
 // Obtain the API URL
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  // Convert to JSON First
+  const jsonRes = await res.json();
   if (res.ok) {
-    return res.json();
+    return jsonRes;
   } else {
-    throw new Error("Bad Response");
+    throw { name: "servicesError", message: jsonRes };
   }
 }
 

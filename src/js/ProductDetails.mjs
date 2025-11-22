@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, removeAlertMessages, generateBreadCrumbs } from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -13,6 +13,9 @@ export default class ProductDetails {
         this.product = await this.dataSource.findProductById(this.productId);
         // the product details are needed before rendering the HTML
         this.renderProductDetails();
+        // Add the breadCrumbs here
+        const pageList = ["Home", "Product List", this.product.Name];
+        generateBreadCrumbs(pageList);
         // once the HTML is rendered, add a listener to the Add to Cart button
         // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
         document
@@ -46,6 +49,9 @@ export default class ProductDetails {
       };
       curCart.push(this.product);
       setLocalStorage("so-cart", curCart);
+      // Send an alert to let the user know it was added, also remove all alerts just in case
+      removeAlertMessages();
+      alertMessage(`Your ${this.product.Name} was added to the cart!`);
     }
 
     renderProductDetails() {
