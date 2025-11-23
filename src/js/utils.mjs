@@ -64,3 +64,42 @@ export async function loadHeaderFooter(){
   renderWithTemplate(footerContent, footer);
 }
 
+// Create alert messages
+export function alertMessage(message, scroll = true) {
+  // Create a div to hold the alert
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+
+  const closeIcon = document.createElement("span");
+  closeIcon.textContent = "X";
+
+  // Add the message to the alert
+  alert.innerHTML = `<p>${message}</p>`;
+  alert.appendChild(closeIcon);
+
+  // Add event listner to close button
+  closeIcon.addEventListener("click", () => {
+    main.removeChild(alert);
+  });
+
+  const main = document.querySelector("main");
+  main.prepend(alert);
+
+  // Scroll to top if scroll is true
+  if (scroll) {
+    window.scrollTo(0,0);
+  }
+}
+
+// Remove alert messages
+export function removeAlertMessages() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => {document.querySelector("main").removeChild(alert)});
+}
+
+// Generate Bread Crumbs for User
+export function generateBreadCrumbs(pageList) {
+  const breadCrumbs = pageList.join(" -> ");
+  // Place the breadCrumbs in the div
+  document.querySelector(".breadcrumbs").innerHTML = `<p>${breadCrumbs}</p>`;
+}

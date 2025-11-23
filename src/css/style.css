@@ -114,6 +114,24 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+
+.alert p {
+  font-size: small;
+}
+
+.alert span {
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -279,6 +297,30 @@ button {
 
 .category img {
   width: 50px;
+}
+
+#checkout {
+  width: 80%;
+  max-width: 900px;
+  justify-self: center;
+}
+
+#checkout fieldset {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#checkout label {
+  padding: 20px 0 20px 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#checkout input {
+  width: 80%;
+  padding: 0.4rem 0;
+  margin-top: 5px;
 }
 
 @media screen and (min-width: 500px) {
