@@ -108,7 +108,7 @@ export default class CheckoutProcess {
       console.log(response);
       // If these were okay keep going, clear the cart and also redirect the user
       setLocalStorage("so-cart", ""); // Send in an empty string to make it empty
-      window.location.replace("/checkout/success.html");
+      location.assign("/checkout/success.html");
     } catch (err) {
       // Remove all previous alerts
       removeAlertMessages();
