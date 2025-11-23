@@ -2,10 +2,10 @@ import { setLocalStorage, getLocalStorage, alertMessage, removeAlertMessages, ge
 
 export default class ProductDetails {
 
-    constructor(productId, dataSource){
-    this.productId = productId;
-    this.product = {};
-    this.dataSource = dataSource;
+    constructor(productId, dataSource) {
+        this.productId = productId;
+        this.product = {};
+        this.dataSource = dataSource;
     }
 
     async init() {
@@ -19,8 +19,8 @@ export default class ProductDetails {
         // once the HTML is rendered, add a listener to the Add to Cart button
         // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
         document
-        .getElementById('addToCart')
-        .addEventListener('click', this.addProductToCart.bind(this));
+            .getElementById('addToCart')
+            .addEventListener('click', this.addProductToCart.bind(this));
     }
 
     addProductToCart() {
@@ -71,6 +71,7 @@ function productDetailsTemplate(product) {
     const priceElement = document.getElementById('productPrice');
     const originalPrice = product.SuggestedRetailPrice;
     const finalPrice = product.FinalPrice;
+    const discountFlag = document.getElementById('discountFlag');
 
     if (originalPrice && finalPrice < originalPrice) {
         const discount = Math.round(((originalPrice - finalPrice) / originalPrice) * 100);
@@ -85,8 +86,12 @@ function productDetailsTemplate(product) {
         (${discount}% OFF)
       </span>
     `;
+
+        discountFlag.textContent = `${discount}% OFF`;
+        discountFlag.style.display = 'inline-block';
     } else {
         priceElement.textContent = `$${finalPrice}`;
+        discountFlag.style.display = 'none';
     }
     document.getElementById('productColor').textContent = product.Colors[0].ColorName;
     document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
