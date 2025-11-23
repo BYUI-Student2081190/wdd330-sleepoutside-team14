@@ -114,6 +114,24 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+
+.alert p {
+  font-size: small;
+}
+
+.alert span {
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
 /* End utility classes */
 
 /* Cart icon styles */

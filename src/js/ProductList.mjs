@@ -34,7 +34,7 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
-        const pageList = ["Home", "Product List", this.category.charAt(0).toUpperCase() + this.category.slice(1), `(${list.length} Items)`];
+        const pageList = [`<a href="/index.html">Home</a>`, `<a href="/product_listing/index.html?category=${this.category}">Product List</a>`, this.category.charAt(0).toUpperCase() + this.category.slice(1), `(${list.length} Items)`];
         generateBreadCrumbs(pageList);
         document.querySelector("#product-type").textContent = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     }

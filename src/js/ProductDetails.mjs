@@ -14,7 +14,7 @@ export default class ProductDetails {
         // the product details are needed before rendering the HTML
         this.renderProductDetails();
         // Add the breadCrumbs here
-        const pageList = ["Home", "Product List", this.product.Name];
+        const pageList = [`<a href="/index.html">Home</a>`, `<a href="/product_listing/index.html?category=${this.product.Category}">Product List</a>`, this.product.Name];
         generateBreadCrumbs(pageList);
         // once the HTML is rendered, add a listener to the Add to Cart button
         // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
